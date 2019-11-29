@@ -18,7 +18,15 @@ public class Cliente {
     private Domicilio domicilio;
     private BigDecimal ingresos;
     private DocumentoDigital dniDigitalizado;
-    private Prestamo prestamo;
+    private Prestamo[] prestamos;
+
+    public Prestamo[] getPrestamos() {
+        return prestamos;
+    }
+
+    public void setPrestamos(Prestamo[] prestamo) {
+        this.prestamos = prestamo;
+    }
 
     public void cambiarDomicilio(Domicilio nuevoDomicilio){
         nuevoDomicilio.setCalle(nuevoDomicilio.getCalle());
@@ -76,13 +84,7 @@ public class Cliente {
         this.dniDigitalizado = dniDigitalizado;
     }
 
-    public Prestamo getPrestamo() {
-        return prestamo;
-    }
 
-    public void setPrestamo(Prestamo prestamo) {
-        this.prestamo = prestamo;
-    }
     
     
     

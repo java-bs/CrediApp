@@ -27,6 +27,11 @@ public class Prestamo {
         
     }
     
+    @Override
+    public String toString(){
+        return "Monto = "+ this.monto + " cantidad de cuotas "+ this.cantidadCuotas;        
+    }
+    
     public BigDecimal getMonto() {
         return monto;
     }
