@@ -35,6 +35,11 @@ public class Cliente {
     public void actualizarIngresos(DocumentoDigital recibo, BigDecimal monto){
         
     }
+
+    @Override
+    public String toString() {
+        return "Cliente nombre :"+ this.nombreApellido +". Con domicilio en : "+ this.domicilio.getCalle();
+    }
     
     public int getCuentaBancaria() {
         return cuentaBancaria;

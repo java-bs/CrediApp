@@ -17,6 +17,12 @@ public class Prestamo {
     private int cantidadCuotas;
     private BigDecimal tasa;
     private DocumentoDigital documentos;
+    
+    public Prestamo(BigDecimal monto, int cantidadCuotas){
+        this.monto = monto;
+        this.cantidadCuotas = cantidadCuotas;        
+    }
+    
 
     public Boolean cancelarCuota(int cantidad){
         Boolean cancelo = true;
@@ -35,10 +41,11 @@ public class Prestamo {
     public BigDecimal getMonto() {
         return monto;
     }
-
+    
+    /*
     public void setMonto(BigDecimal monto) {
         this.monto = monto;
-    }
+    }*/
 
     public int getPlazoEnMeses() {
         return plazoEnMeses;

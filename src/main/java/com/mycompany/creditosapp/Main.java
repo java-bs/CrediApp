@@ -27,21 +27,19 @@ public class Main {
         monto.setScale(5); // le decimos que va a tener 5 decimales
         monto = new BigDecimal(150000.25);
 
-        Prestamo ahora12 = new Prestamo();
+        Prestamo ahora12 = new Prestamo(monto, 12);
         ahora12.setCantidadCuotas(12);
         ahora12.setPlazoEnMeses(12);
         ahora12.setTasa(tasa);
-        ahora12.setMonto(monto);
 
         monto.setScale(5); // le decimos que va a tener 5 decimales
         monto = new BigDecimal(8742.25);
         tasa  = new BigDecimal(18.05);
         
-        Prestamo ahora18 = new Prestamo();
+        Prestamo ahora18 = new Prestamo(monto, 18);
         ahora18.setCantidadCuotas(18);
         ahora18.setPlazoEnMeses(18);
         ahora18.setTasa(tasa);
-        ahora18.setMonto(monto);
         
         
         Domicilio domicilio = new Domicilio();
@@ -80,6 +78,7 @@ public class Main {
 
         System.out.println("Imprimo el objeto al que se le sobreescribió el metodo toString()");
         System.out.println("Prestamo creado " + ahora12);
+        System.out.println("Nuestro cliente es :"+ cliente);
                 
 
     }

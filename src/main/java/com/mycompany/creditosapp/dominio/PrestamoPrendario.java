@@ -5,12 +5,18 @@
  */
 package com.mycompany.creditosapp.dominio;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author leza1289
  */
 public class PrestamoPrendario extends Prestamo {
     private String garantia;
+
+    public PrestamoPrendario(BigDecimal monto, int cantidadCuotas) {
+        super(monto, cantidadCuotas);
+    }
 
     public String getGarantia() {
         return garantia;
