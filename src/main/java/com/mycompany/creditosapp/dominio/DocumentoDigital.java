@@ -14,7 +14,7 @@ import java.util.Date;
 public class DocumentoDigital {
     private String nombre;
     private Date fechaDeCarga;
-    private Byte imagen;
+    private byte[] imagen;
 
     public String getNombre() {
         return nombre;
@@ -32,11 +32,11 @@ public class DocumentoDigital {
         this.fechaDeCarga = fechaDeCarga;
     }
 
-    public Byte getImagen() {
+    public byte[] getImagen() {
         return imagen;
     }
 
-    public void setImagen(Byte imagen) {
+    public void setImagen(byte[] imagen) {
         this.imagen = imagen;
     }
 }

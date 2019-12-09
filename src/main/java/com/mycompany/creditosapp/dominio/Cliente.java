@@ -6,6 +6,7 @@
 package com.mycompany.creditosapp.dominio;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 
 /**
  *
@@ -20,6 +21,12 @@ public class Cliente {
     private DocumentoDigital dniDigitalizado;
     private Prestamo[] prestamos;
 
+    public Cliente(String nombreNuevo){
+        System.out.println("Creacion del cliente: "+ nombreNuevo);
+        this.nombreApellido = nombreNuevo;
+    }
+    
+    
     public Prestamo[] getPrestamos() {
         return prestamos;
     }
@@ -38,7 +45,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente nombre :"+ this.nombreApellido +". Con domicilio en : "+ this.domicilio.getCalle();
+        return "Cliente{ DNI : "+ dni +" Nombre : "+ nombreApellido +" Con domicilio en : "+ domicilio +" prestamos :"+ Arrays.toString(prestamos)+ "}";
     }
     
     public int getCuentaBancaria() {
@@ -61,9 +68,9 @@ public class Cliente {
         return nombreApellido;
     }
 
-    public void setNombreApellido(String nombreApellido) {
-        this.nombreApellido = nombreApellido;
-    }
+//    public void setNombreApellido(String nombreApellido) {
+//        this.nombreApellido = nombreApellido;
+//    }
 
     public Domicilio getDomicilio() {
         return domicilio;

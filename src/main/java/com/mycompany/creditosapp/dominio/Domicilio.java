@@ -15,6 +15,10 @@ public class Domicilio {
     private String piso;
     private String provincia;
     
+    @Override
+    public String toString(){
+        return "Calle "+ this.calle + " Nro. "+ this.numero +" Piso "+ this.piso + " Provincia "+ this.provincia;
+    }
     
 
     public String getCalle() {

@@ -14,8 +14,8 @@ import java.math.BigDecimal;
 public class PrestamoPersonal extends Prestamo {
     private String situacionVeraz;
 
-    public PrestamoPersonal(BigDecimal monto, int cantidadCuotas) {
-        super(monto, cantidadCuotas);
+    public PrestamoPersonal(Banco banco, BigDecimal monto, int cantidadCuotas) {
+        super(banco, monto, cantidadCuotas);
     }
 
     public String getSituacionVeraz() {
