@@ -6,13 +6,17 @@
 package com.mycompany.creditosapp.dominio;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 /**
  *
  * @author leza1289
  */
-public class Cliente {
+public class Cliente implements ImprimirDatos {
     private int cuentaBancaria;
     private String dni;
     private String nombreApellido;
@@ -94,6 +98,35 @@ public class Cliente {
 
     public void setDniDigitalizado(DocumentoDigital dniDigitalizado) {
         this.dniDigitalizado = dniDigitalizado;
+    }
+
+    @Override
+    public void imprimirDatos() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        System.out.println("Impresion : "
+                + "DNI" + dni +", ingresos = "+ ingresos
+                + ". Color de impresion : "+ COLORDEFAULT
+                );
+        
+//        ArrayList<Prestamo> arrayList = new ArrayList<Prestamo>();
+//        arrayList.sort(Comparator.comparing(Prestamo::getFechaAdjudicacion));        
+        
+        //Arrays.asList es la manera que tengo de convertir una variable de tipo array a List
+        List<Prestamo> listaDePrestamos = Arrays.asList(prestamos);        
+        //listaDePrestamos.sort(Comparator.comparing(Prestamo::getFechaAdjudicacion).reversed());
+        List<Prestamo> listaFiltrada = listaDePrestamos.stream()
+                .filter(pres -> pres.getFechaAcreditacion()!= null)
+                .filter(pres -> pres.getFechaAcreditacion().isBefore(LocalDate.now()))
+                .collect(Collectors.toList());   
+        
+        listaFiltrada
+                .sort(Comparator.comparing(Prestamo::getFechaAcreditacion));
+        
+        for (Prestamo prestamo : listaDePrestamos) {
+            prestamo.imprimirDatos();
+            
+        }
     }
 
 

@@ -26,4 +26,11 @@ public class PrestamoPrendario extends Prestamo {
         this.garantia = garantia;
     }
     
+    @Override
+    public void imprimirDatos() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Prestamo prendario --> Garantia : "+ garantia +"\n"
+        +" Fecha de Adjudicacion ... "+ this.getFechaAdjudicacion());
+    }
+    
 }
