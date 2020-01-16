@@ -14,13 +14,15 @@ import com.mycompany.creditosapp.dominio.PrestamoPrendario;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  *
  * @author leza1289
  */
 
-
+@SpringBootApplication
 public class Main {
 
     /**
@@ -28,6 +30,8 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here 
+        
+        SpringApplication.run(Main.class, args);
 
         Banco bancoSaenz = Banco.obtenerBanco();
         String codigoDelBanco = bancoSaenz.getCodigo();

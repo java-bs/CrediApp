@@ -21,6 +21,16 @@ public abstract class Prestamo implements ImprimirDatos{
     private DocumentoDigital[] documentosDigitales;
     private LocalDate fechaAdjudicacion;
     private LocalDate fechaAcreditacion;
+    private int numero;
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+    
     
 
     public LocalDate getFechaAdjudicacion() {
