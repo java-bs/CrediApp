@@ -59,4 +59,44 @@ public class PaginasController {
         return "prestamos-pagina";
     }
     
+    @RequestMapping(method = GET, path = "/clientes")
+    public String paginaClientes(Model model){
+        
+        Domicilio domicilio1 = new Domicilio();
+        domicilio1.setCalle("A.Villaflor");
+        domicilio1.setNumero(108);
+        domicilio1.setPiso("-");
+        domicilio1.setProvincia("Buenos Aires");
+
+        Cliente cliente1 = new Cliente("Alexis Leza");
+        cliente1.setDni("23277220");
+        cliente1.setDomicilio(domicilio1);
+        BigDecimal ingresos = new BigDecimal("65000");
+        cliente1.setIngresos(ingresos);
+        
+        Domicilio domicilio2 = new Domicilio();
+        domicilio2.setCalle("Av. Mitre");
+        domicilio2.setNumero(2142);
+        domicilio2.setPiso("-");
+        domicilio2.setProvincia("Sarandi");
+
+        Cliente cliente2 = new Cliente("John McNamara");
+        cliente2.setDni("9840521");
+        cliente2.setDomicilio(domicilio2);
+        BigDecimal ingresos2 = new BigDecimal("2650000");
+        cliente1.setIngresos(ingresos2);        
+        
+        Cliente[] totalClientes = {
+            cliente1,
+            cliente2
+        };
+
+        List<Cliente> clientesList = asList(totalClientes);
+        
+        model.addAttribute("clientes", clientesList);
+
+        
+        return "clientes";
+    }
+    
 }
