@@ -9,57 +9,57 @@ and open the template in the editor.
         <title>CreditosApp</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <style>
-            table {
-                border: 1px solid royalblue;
-            }
-            td {
-                border: 1px solid lightskyblue;
-            }
-            body {
-                font-family: sans-serif;
-            }
-        </style>        
-        
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">   		
+        <script src="js/bootstrap.min.js"></script> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">              
+
     </head>
     <body>
-        <div>Mis prestamos</div>
+        <div class="container">Mis prestamos</div>
+
         <p>Con th:each puedo iterar la lista inyectada en el atributo "prestamos"</p>
-        
-        <table>
-            <tr>
-                <td>
-                   Monto 
-                </td>
-                <td>
-                    Cantidad de cuotas
-                </td>
-            </tr>
-            <tr th:each="prestamo: ${prestamos}">
-                <td th:text="${prestamo.monto}" />
-                <td th:text="${prestamo.cantidadCuotas}" />
-            </tr>
-        </table>
+
+        <div class="form-group" th:each="prestamo: ${prestamos}">
+            <div for="prestamoMonto" class="control-label col-xs-4">Prestamo monto:</div>
+            <div type="text" name="monto" id="monto" class="form-control" th:text="${prestamo.monto}" required="true" />                                   
+
+            <div for="prestamoCuotas" class="control-label col-xs-4">cantidad de cuotas:</div>
+            <div type="text" name="cuotas" id="cuotas" class="form-control" th:text="${prestamo.cantidadCuotas}" required="true" />                                                                                    
+
+        </div>
 
         <p>Aca estoy usando el prestamo cargado en el atributo "otroPrestamo"</p>
-        
-        <div>
-            Otro prestamo, Monto
+
+        <div class="form-group">
+            <div for="otroPrestamo" class="control-label col-xs-4">Otro prestamo, Monto:</div>
+            <div type="text" name="montoOtroPrestamo" id="montoOtro" class="form-control" th:text="${otroPrestamo.monto}" required="true" />               
         </div>
-        <p th:text="${otroPrestamo.monto}"></p>
+
+        <div class="form-group">                
+            <input type="text" name="extra" id="extra" class="form-control" text="" required="false" />                  
+            <div   id="extraMuestra" class="form-control" text="">
+            </div>                  
+        </div>
 
         <button><a href="/clientes">Clientes</a></button>
-        
+        <button id="btnExtra" value="btnE" name="btnE">Carga Extra</button>
+
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>         
-        
+
         <script>
 
             //Envío de datos con POST
-            
+
             var prestamo = {
                 situacionVeraz: "1234"
             };
+            var otroPrestamo = {
+                monto: "11111",
+                cantidadCuotas : "99",
+                situacionVeraz: "nada"
+            };            
+            
             //convierto el objeto a String
             var prestamoJson = JSON.stringify(prestamo);
 
@@ -72,20 +72,39 @@ and open the template in the editor.
 
 
             //Pedido de datos con GET
-            
+
             $.ajax({
                 contentType: 'application/json',
                 type: 'GET',
                 url: "/apirest/prestamos/777777"
             })
-            .done(function (respuesta) {
-                // se encadena la funcion "done" para hacer algo
-                // una vez que llega la respuesta del servidor
-                console.log(respuesta)
-                //se imprime por consola del navegador (F12)
+                    .done(function (respuesta) {
+                        // se encadena la funcion "done" para hacer algo
+                        // una vez que llega la respuesta del servidor
+                        console.log(respuesta)
+                        //se imprime por consola del navegador (F12)
+                    });
+
+            $("#btnExtra").click(function (e) {
+                e.preventDefault();
+                console.log("Entro al boton!")
+                var otroPrestamoJson = JSON.stringify(otroPrestamo);
+                $.ajax({
+                    contentType: 'application/json',
+                    type: "POST",
+                    url: "/apirest/prestamos",
+                    data: otroPrestamoJson ,
+                    success: function (result) {
+                        alert('ok');
+                    },
+                    error: function (result) {
+                        alert('error');
+                    }
+                });
             });
 
+
         </script>
-        
+
     </body>
 </html>

@@ -72,11 +72,13 @@ public class PrestamoRestController {
         return miPrimerPrestamo;
     }
     
-    @RequestMapping(method = POST, path = "/apirest/prestamoss")
+    @RequestMapping(method = POST, path = "/apirest/prestamos")
     public void crearPrestamo(@RequestBody PrestamoPersonal prestamo){
         
         //No se puede usar la clase "Prestamo" porque la conversión
         // no maneja clases abstractas
+        
+
         
         System.out.println(prestamo);
         
