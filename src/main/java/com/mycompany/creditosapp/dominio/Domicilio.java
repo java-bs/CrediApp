@@ -5,11 +5,25 @@
  */
 package com.mycompany.creditosapp.dominio;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author leza1289
  */
+@Entity
 public class Domicilio {
+    @Id
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
     private String calle;
     private int numero;
     private String piso;

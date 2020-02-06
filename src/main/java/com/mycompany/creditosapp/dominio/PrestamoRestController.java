@@ -22,39 +22,38 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class PrestamoRestController {
-    
-    @RequestMapping(method = GET, path = "/apirest/prestamos")    
+
+    @RequestMapping(method = GET, path = "/apirest/prestamos")
     public List<Prestamo> getPrestamo() {
 
-        
         Banco bancoSaenz = Banco.obtenerBanco();
         String codigoDelBanco = bancoSaenz.getCodigo();
         System.out.println(Banco.convertirAString());
-        System.out.println("bancoSaenz : "+ bancoSaenz);        
-        
+        System.out.println("bancoSaenz : " + bancoSaenz);
+
         BigDecimal monto = new BigDecimal("3333.44");
         PrestamoPersonal prestamo1 = new PrestamoPersonal(bancoSaenz, monto, 18);
         prestamo1.setFechaAdjudicacion(LocalDate.of(2019, 05, 10));
         prestamo1.setFechaAcreditacion(LocalDate.of(2019, 05, 15));
-        
+
         monto = new BigDecimal("5555.66");
         PrestamoPrendario prestamo2 = new PrestamoPrendario(bancoSaenz, monto, 24);
         prestamo2.setGarantia("Garante abrochado");
         prestamo2.setFechaAdjudicacion(LocalDate.of(2019, 8, 8));
-        prestamo2.setFechaAcreditacion(LocalDate.of(2019, 8, 21));        
+        prestamo2.setFechaAcreditacion(LocalDate.of(2019, 8, 21));
 
         monto = new BigDecimal("7777.88");
         PrestamoPrendario prestamo3 = new PrestamoPrendario(bancoSaenz, monto, 36);
         prestamo3.setGarantia("Garante seguro");
         prestamo3.setFechaAdjudicacion(LocalDate.of(2019, 11, 8));
-        prestamo3.setFechaAcreditacion(LocalDate.of(2020, 05, 10)); 
-        
+        prestamo3.setFechaAcreditacion(LocalDate.of(2020, 05, 10));
+
         Prestamo[] prestamosDelCliente = {
             prestamo1,
             prestamo2,
             prestamo3
         };
-        
+
         return asList(prestamosDelCliente);
     }
 
@@ -68,21 +67,26 @@ public class PrestamoRestController {
         miPrimerPrestamo.setFechaAcreditacion(LocalDate.of(2019, 10, 20));
 
         miPrimerPrestamo.setNumero(numero);
-        
+
         return miPrimerPrestamo;
     }
-    
+
+
     @RequestMapping(method = POST, path = "/apirest/prestamos")
-    public void crearPrestamo(@RequestBody PrestamoPersonal prestamo){
-        
+    //public Prestamo crearPrestamo(@RequestBody PrestamoPersonal prestamo) {
+    public Prestamo crearPrestamo() {
         //No se puede usar la clase "Prestamo" porque la conversión
         // no maneja clases abstractas
         
+        Banco bancoSaenz = Banco.obtenerBanco();
+        BigDecimal monto = new BigDecimal("1973.05");
+        PrestamoPersonal pPersonal = new PrestamoPersonal(bancoSaenz, monto, 66);
+        pPersonal.setFechaAdjudicacion(LocalDate.of(2020, 02, 06));
+        pPersonal.setFechaAcreditacion(LocalDate.of(2020, 02, 16));        
+        
+        //System.out.println(prestamo);
+        return(pPersonal);
 
-        
-        System.out.println(prestamo);
-        
     }
 
-    
 }

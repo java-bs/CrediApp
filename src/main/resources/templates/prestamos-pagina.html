@@ -93,11 +93,14 @@ and open the template in the editor.
                     contentType: 'application/json',
                     type: "POST",
                     url: "/apirest/prestamos",
-                    data: otroPrestamoJson ,
+                    //data: otroPrestamoJson ,
                     success: function (result) {
-                        alert('ok');
+                        //alert('ok');
+                        console.log(result)
+                        var resultJ = JSON.stringify(result);
+                        $("#extraMuestra").text(resultJ)
                     },
-                    error: function (result) {
+                    error: function () {
                         alert('error');
                     }
                 });
